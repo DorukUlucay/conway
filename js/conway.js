@@ -1,15 +1,18 @@
 conway = {
 
-    _size: 8,
+    _size: 16,
 
     world: null,
 
     init: function() {
         conway.world = conway.getEmptyWorld(conway._size);
 
-        conway.world[5][6] = 1;
-        conway.world[6][6] = 1;
-        conway.world[7][6] = 1;
+        conway.world[8][8] = 1;
+        conway.world[9][9] = 1;
+        conway.world[10][9] = 1;
+        conway.world[10][8] = 1;
+        conway.world[10][7] = 1;
+
     },
 
     iterate: function() {
@@ -36,9 +39,8 @@ conway = {
                 }
             }
         }
-
         conway.world = newWorld;
-        printWorld(conway.world);
+        return conway.world;
     },
 
     isOutOfBounds: function(x, y) {

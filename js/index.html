@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>Conway in JS</title>
+    <script src="conway.js"></script>
+    <!-- <style></style> -->
+    <!-- <link rel="stylesheet" type="text/css" href=""> -->
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="160" height="160" style="border:1px solid #c3c3c3;">
+Your browser does not support the canvas element.
+</canvas>
+
+
+    <p><button onclick="next()">Next</button></p>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) {
+            conway.init();
+            print();
+        });
+
+        function next() {
+
+            conway.iterate();
+            print();
+
+        }
+
+        function print() {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
+
+            for (y in conway.world) {
+                for (x in conway.world[y]) {
+
+                    if (conway.world[x][y] == 1) {
+                        ctx.fillStyle = "#FF0000";
+                        ctx.fillRect(y * 10, x * 10, 10, 10);
+                    } else {
+                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillRect(y * 10, x * 10, 10, 10);
+                    }
+
+
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
